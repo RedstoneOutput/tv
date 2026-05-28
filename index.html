@@ -8,7 +8,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<title>LIVE TV</title>
+<title>ZK LIVE TV</title>
 
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -154,7 +154,7 @@ var(--br);cursor:pointer}
 
 
 <div id="fbLoading">
-  <h2><span>LIVE</span> TV</h2>
+  <h2>ZK <span>LIVE</span> TV</h2>
   <div class="spinner"></div>
   <p> Connect ho raha hai...</p>
 </div>
@@ -162,7 +162,7 @@ var(--br);cursor:pointer}
 
 <div id="authPage">
   <div class="auth-logo">
-    <h1> <span>LIVE</span> TV</h1>
+    <h1>ZK <span>LIVE</span> TV</h1>
     <p>Free • HD • Live Channels </p>
   </div>
   <div class="auth-box">
@@ -191,12 +191,12 @@ Google se Login</button>
 
     <div id="signupForm" style="display:none">
       <div class="igrp">
-        <label> Full Name</label>
-        <input type="text" id="su-name" placeholder="Enter your name.">
+        <label> Poora Naam</label>
+        <input type="text" id="su-name" placeholder="Apna naam daalo">
       </div>
       <div class="igrp">
         <label> Email</label>
-        <input type="email" id="su-email" placeholder="Enter your email.">
+        <input type="email" id="su-email" placeholder="Email daalo">
       </div>
       <div class="igrp">
      
@@ -204,9 +204,9 @@ Google se Login</button>
         <input type="password" id="su-pass" placeholder="6+ characters">
       </div>
       <div class="aerr" id="su-err"></div>
-      <button class="abtn" id="su-btn" onclick="doSignup()"> Create Account</button>
+      <button class="abtn" id="su-btn" onclick="doSignup()"> Account Banao</button>
       <div class="divider">— ya —</div>
-      <button class="abtn google" onclick="doGoogleLogin()"> Google Signup</button>
+      <button class="abtn google" onclick="doGoogleLogin()"> Google se Signup</button>
     </div>
   </div>
 </div>
@@ -214,7 +214,7 @@ Google se Login</button>
 <div id="mainApp">
   <header>
     <div style="display:flex;align-items:center;gap:6px">
-      <span class="hlogo"> <span>TV</span></span>
+      <span class="hlogo">ZK <span>TV</span></span>
       <span class="hlive"> LIVE</span>
      
   <span class="fb-badge"> Firebase</span>
@@ -238,7 +238,7 @@ Google se Login</button>
       </video>
       <div id="nowPlaying">
         <span style="font-size:.78rem;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
-           <span id="nowChannel"> Select a channel from below.</span>
+           <span id="nowChannel"> Neeche se channel chuniye</span>
         </span>
         <div style="display:flex;gap:4px;flex-shrink:0;align-items:center">
           <span class="wl-on" id="wlBadge" style="display:none"> ON</span>
@@ -253,10 +253,10 @@ Google se Login</button>
 
     <div class="cat-scroll" id="catScroll"></div>
     <div class="search-wrap">
-      <input id="searchInput" placeholder=" Find Channel..." oninput="filterChannels()">
+      <input id="searchInput" placeholder=" Channel dhundho..." oninput="filterChannels()">
     </div>
     <div id="channelCount"></div>
-    <div id="loading"> Channels are loading...</div>
+    <div id="loading"> Channels load ho rahe hain...</div>
     <div id="channels"></div>
   </div>
 
@@ -270,7 +270,7 @@ Google se Login</button>
     </div>
 
     <div class="analytics-card">
-      <h3> Your Activity</h3>
+      <h3> Aapki Activity</h3>
       <div class="analytics-grid">
         <div class="a-stat">
           <div class="a-num" id="statChannels">0</div>
@@ -294,7 +294,7 @@ Google se Login</button>
         <div class="pico"></div>
         <div class="ptxt">
           <h4>Language / </h4>
-          <p id="langSub">English</p>
+          <p id="langSub">Hindi / English</p>
         </div>
         <div class="parr">›</div>
       </div>
@@ -303,7 +303,7 @@ Google se Login</button>
   
        <div class="ptxt">
           <h4>Screen Always On</h4>
-          <p id="wakeLockStatus">Stop — Practice penance.</p>
+          <p id="wakeLockStatus">Band — tap karke on karo</p>
         </div>
         <div class="parr">›</div>
       </div>
@@ -312,7 +312,7 @@ Google se Login</button>
         <div class="ptxt">
           <h4>Notifications</h4>
       
-     <p id="notifStatus">Tap to enable.</p>
+     <p id="notifStatus">Tap karke enable karo</p>
         </div>
         <div class="parr">›</div>
       </div>
@@ -320,7 +320,7 @@ Google se Login</button>
         <div class="pico"></div>
         <div class="ptxt">
           <h4>App Version</h4>
-          <p>Live TV </p>
+          <p>ZK Live TV v3.0 </p>
         </div>
       </div>
     </div>
@@ -347,7 +347,7 @@ Google se Login</button>
     <div class="lang-opt on" id="langHindi" onclick="setLang('hi')">
       <span style="font-size:1.5rem"></span>
    
-    <div><div style="font-weight:700"></div><div style="font-size:.75rem;color:#7a8aaa"></div></div>
+    <div><div style="font-weight:700"></div><div style="font-size:.75rem;color:#7a8aaa">Hindi</div></div>
       <div class="lcheck"></div>
     </div>
     <div class="lang-opt" id="langEnglish" onclick="setLang('en')">
@@ -453,22 +453,22 @@ async function doSignup() {
   let pass = document.getElementById('su-pass').value.trim();
   let err = document.getElementById('su-err');
   let btn = document.getElementById('su-btn');
-  if (!name) { err.textContent = ' Enter name'; return; }
-  if (!email) { err.textContent = ' Enter your email.'; return;
+  if (!name) { err.textContent = ' Naam daalo'; return; }
+  if (!email) { err.textContent = ' Email daalo'; return;
   }
   if (pass.length < 6) { err.textContent = ' Password 6+ characters ka ho'; return;
   }
-  btn.disabled = true; btn.textContent = ' It is being built...'; err.textContent = '';
+  btn.disabled = true; btn.textContent = ' Ban raha hai...'; err.textContent = '';
   try {
     let cred = await auth.createUserWithEmailAndPassword(email, pass);
     await cred.user.updateProfile({ displayName: name });
-
+    // LocalStorage mein save karo
     saveLocal('user_' + cred.user.uid, { name, email, createdAt: Date.now() });
     analytics.logEvent('sign_up', { method: 'email' });
-    showToast(' Account created!');
+    showToast(' Account ban gaya!');
   } catch(e) {
     err.textContent = ' ' + fbError(e.code);
-    btn.disabled = false; btn.textContent = ' Create Account';
+    btn.disabled = false; btn.textContent = ' Account Banao';
   }
 }
 
@@ -478,15 +478,15 @@ async function doLogin() {
   let pass = document.getElementById('li-pass').value.trim();
   let err = document.getElementById('li-err');
   let btn = document.getElementById('li-btn');
-  if (!email) { err.textContent = ' Enter your email.';
+  if (!email) { err.textContent = ' Email daalo';
   return; }
-  if (!pass) { err.textContent = ' Enter password'; return; }
+  if (!pass) { err.textContent = ' Password daalo'; return; }
   btn.disabled = true;
-  btn.textContent = ' Logging in...'; err.textContent = '';
+  btn.textContent = ' Login ho raha hai...'; err.textContent = '';
   try {
     await auth.signInWithEmailAndPassword(email, pass);
     analytics.logEvent('login', { method: 'email' });
-    showToast(' Logged in!');
+    showToast(' Login ho gaya!');
   } catch(e) {
     err.textContent = ' ' + fbError(e.code);
     btn.disabled = false; btn.textContent = ' Login Karo';
@@ -499,7 +499,7 @@ async function doGoogleLogin() {
   try {
     await auth.signInWithPopup(provider);
     analytics.logEvent('login', { method: 'google' });
-    showToast(' Logged in with Google!');
+    showToast(' Google se login ho gaya!');
   } catch(e) {
     showToast(' ' + fbError(e.code));
   }
@@ -512,25 +512,27 @@ async function doLogout() {
   currentUser = null;
   document.getElementById('authPage').style.display = 'flex';
   document.getElementById('mainApp').style.display = 'none';
-  showToast(' Logged out');
+  showToast(' Logout ho gaya');
 }
 
 // Firebase error Hindi mein
 function fbError(code) {
   const e = {
-    'auth/user-not-found': 'The email is not registered.',
-    'auth/wrong-password': 'The password is incorrect.',
-    'auth/email-already-in-use': 'The email is already registered.',
-    'auth/weak-password': 'The password is very weak.',
-    'auth/invalid-email': 'The email is incorrect.',
-    'auth/too-many-requests': 'You've tried too much; try again later.',
-    'auth/network-request-failed': 'Check the internet.',
-    'auth/popup-closed-by-user': 'Google login cancelled.',
+    'auth/user-not-found': 'Email registered nahi hai',
+    'auth/wrong-password': 'Password galat hai',
+    'auth/email-already-in-use': 'Email pehle se registered hai',
+    'auth/weak-password': 'Password bahut weak hai',
+    'auth/invalid-email': 'Email sahi nahi hai',
+    'auth/too-many-requests': 'Bahut zyada try kiya, baad mein try karo',
+    'auth/network-request-failed': 'Internet check karo',
+    'auth/popup-closed-by-user': 'Google login cancel kiya',
   };
-  return e[code] || 'An error occurred. Please try again.';
+  return e[code] || 'Kuch error aaya, dobara try karo';
 }
 
-
+// ================================================
+// APP START
+// ================================================
 function startApp() {
   document.getElementById('authPage').style.display = 'none';
   document.getElementById('mainApp').style.display = 'block';
@@ -543,15 +545,15 @@ function startApp() {
   document.getElementById('profileName').textContent = name;
   document.getElementById('profileEmail').textContent = ' ' + currentUser.email;
 
-
+  // Stats update
   statSessions++;
   saveLocal('statSessions', statSessions);
   updateStatUI();
-
+  // Analytics
   analytics.logEvent('app_open');
   analytics.setUserId(currentUser.uid);
 
-
+  // Wake Lock
   requestWakeLock();
 
   applyLang();
@@ -559,7 +561,9 @@ function startApp() {
   loadM3U();
 }
 
-
+// ================================================
+// STATS — LocalStorage mein save hoga
+// ================================================
 function updateStatUI() {
   document.getElementById('statChannels').textContent = statChannels;
   document.getElementById('statMins').textContent = statMins;
@@ -579,16 +583,18 @@ function saveStats() {
 
 setInterval(saveStats, 60000);
 window.addEventListener('beforeunload', saveStats);
-
+// ================================================
+// WAKE LOCK
+// ================================================
 async function requestWakeLock() {
   if (!('wakeLock' in navigator)) return;
   try {
     wakeLock = await navigator.wakeLock.request('screen');
     document.getElementById('wlBadge').style.display = 'inline-flex';
-    document.getElementById('wakeLockStatus').textContent = ' The screen is on — tap to turn it off.';
+    document.getElementById('wakeLockStatus').textContent = ' Screen on hai — tap karke band karo';
     wakeLock.addEventListener('release', () => {
       document.getElementById('wlBadge').style.display = 'none';
-      document.getElementById('wakeLockStatus').textContent = 'Stop — Practice penance.';
+      document.getElementById('wakeLockStatus').textContent = 'Band — tap karke on karo';
     });
   } catch(e) {}
 }
@@ -597,35 +603,39 @@ async function toggleWakeLock() {
   if (wakeLock) {
     await wakeLock.release();
     wakeLock = null;
-    showToast(' Turned off Always-on Display.');
+    showToast(' Screen always-on band kiya');
   } else {
     await requestWakeLock();
-    if (wakeLock) showToast(' Turned on Always-On Display.');
-    else showToast('Not supported on this device.');
+    if (wakeLock) showToast(' Screen always-on on kiya');
+    else showToast('Is device mein support nahi');
   }
 }
 
 document.addEventListener('visibilitychange', async () => {
   if (document.visibilityState === 'visible' && !wakeLock) await requestWakeLock();
 });
-
+// ================================================
+// NOTIFICATIONS
+// ================================================
 async function requestNotif() {
   try {
     let p = await Notification.requestPermission();
     if (p === 'granted') {
-      document.getElementById('notifStatus').textContent = ' Notifications are on.';
+      document.getElementById('notifStatus').textContent = ' Notifications on hain';
       analytics.logEvent('notification_enabled');
-      showToast(' Notifications are turned on!');
+      showToast(' Notifications on ho gayi!');
     } else {
-      showToast(' Permission was not granted.');
+      showToast(' Permission nahi mili');
     }
-  } catch(e) { showToast('Notifications not supported'); }
+  } catch(e) { showToast('Notifications support nahi'); }
 }
 
-
+// ================================================
+// PICTURE IN PICTURE
+// ================================================
 async function startPiP() {
   let v = document.getElementById('player');
-  if (!v.src) { showToast('First, select a channel.'); return; }
+  if (!v.src) { showToast('Pehle channel select karo'); return; }
   try {
     if (document.pictureInPictureElement) {
       await document.exitPictureInPicture();
@@ -634,11 +644,13 @@ async function startPiP() {
       analytics.logEvent('pip_started');
       showToast(' PiP on!');
     }
-  } catch(e) { showToast('PiP is not supported on this device.');
+  } catch(e) { showToast('PiP is device mein support nahi');
   }
 }
 
-
+// ================================================
+// LANGUAGE
+// ================================================
 function applyLang() {
   let t = texts[currentLang];
   document.getElementById('nav-home').textContent = t.home;
@@ -662,8 +674,9 @@ function setLang(lang) {
   analytics.logEvent('language_change', { lang });
 }
 
-
-
+// ================================================
+// CATEGORIES
+// ================================================
 function renderCategories() {
   let cats = categories[currentLang];
   document.getElementById('catScroll').innerHTML = cats.map((c, i) =>
@@ -671,7 +684,9 @@ function renderCategories() {
   ).join('');
 }
 
-
+// ================================================
+// M3U CHANNELS
+// ================================================
 function filterCat(cat, btn) {
   currentCat = cat;
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('on'));
@@ -684,7 +699,7 @@ async function loadM3U() {
   document.getElementById('loading').style.display = 'block';
   document.getElementById('channels').innerHTML = '';
   try {
-    let res = await fetch('https://cdn.jsdelivr.net/gh/iptv-org/iptv@master/streams/us_pluto.m3u');
+    let res = await fetch('https://iptv-org.github.io/iptv/countries/in.m3u');
     let text = await res.text();
     parseM3U(text);
     analytics.logEvent('channels_loaded');
@@ -810,7 +825,9 @@ document.addEventListener('fullscreenchange', () => { if(!document.fullscreenEle
 document.addEventListener('webkitfullscreenchange', () => { if(!document.fullscreenElement) exitFs(); });
 document.getElementById('player').addEventListener('dblclick', goFullscreen);
 
-
+// ================================================
+// NAVIGATION
+// ================================================
 function showPage(id, btn) {
   document.querySelectorAll('.pg').forEach(p => p.classList.remove('on'));
   document.querySelectorAll('.bnav-btn').forEach(b => b.classList.remove('on'));
